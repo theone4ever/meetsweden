@@ -3,13 +3,15 @@ services:
   opencart:
     build: .
     ports:
-     - "80:8081"
+     - "80:80"
+    volumes:
+     - /data/opencart/html:/var/www/html
     depends_on:
      - mysql
   mysql:
     image: mysql
     ports:
-     - "3301:3301"
+     - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: opencart
