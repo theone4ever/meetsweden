@@ -20,10 +20,4 @@ ENV OPENCART_MD5 222c20ee61a4ff280f55fb0ea688c746
 ENV OPENCART_URL https://github.com/opencart/opencart/archive/2.0.3.1.tar.gz
 ENV OPENCART_FILE opencart.tar.gz
 
-RUN curl -sSL ${OPENCART_URL} -o ${OPENCART_FILE} \
-    && echo "${OPENCART_MD5} ${OPENCART_FILE}" | md5sum -c \
-    && tar xzf ${OPENCART_FILE} --strip 2 --wildcards '*/upload/' \
-    && mv config-dist.php config.php \
-    && mv admin/config-dist.php admin/config.php \
-    && rm ${OPENCART_FILE} \
-    && chown -R www-data:www-data .
+RUN chown -R www-data:www-data .
